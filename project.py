@@ -7,14 +7,14 @@ st.title("Stress-Strain Analyzer - by Priyaranjan")
 # Young's Modulus Input
 E = st.number_input(
     "Enter Young's Modulus (MPa)",
-    value=200000.0
-)
+    value=69000)
+
 offset = 0.002
 # Upload CSV
 file = st.file_uploader(
     "Upload CSV File",
-    type=["csv"]
-)
+    type=["csv"])
+
 
 if file:
     df = pd.read_csv(file,header=None,names=["strain","stress"])
@@ -27,8 +27,8 @@ if file:
     fig, ax = plt.subplots()
     ax.plot(strain, stress)
    # ax.plot(strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
-   # ax.axhline(max(stress),linestyle="dashed",color = "red",label="UTS")
-   # ax.axvline(max(strain),linestyle="dashed",color = "green",label ="Max strain")
+   # ax.axvline(max(stress),linestyle="dashed",color = "red",label="UTS")
+#    ax.axhline(max(strain),linestyle="dashed",color = "green",label ="Max strain")
     ax.set_xlabel("Strain")
     ax.set_ylabel("Stress (MPa)")
     ax.set_title("Stress-Strain Curve")
