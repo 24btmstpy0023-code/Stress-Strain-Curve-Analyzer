@@ -26,7 +26,7 @@ if file:
     # Plot Graph
     fig, ax = plt.subplots()
     ax.plot(strain, stress)
-    ax.plot(strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
+  #  ax.plot(strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
     ax.axhline(max(stress),linestyle="dashed",color = "red",label="UTS")
     ax.axvline(max(strain),linestyle="dashed",color = "green",label ="Max strain")
     ax.set_xlabel("Strain")
