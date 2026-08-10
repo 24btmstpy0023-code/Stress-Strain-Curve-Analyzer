@@ -26,7 +26,7 @@ if file:
     # Plot Graph
     fig, ax = plt.subplots()
     ax.plot(strain, stress)
-   # ax.plot(strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
+    ax.plot(strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
     ax.axhline(max(stress),linestyle="dashed",color = "red",label="UTS")
     ax.axvline(max(strain),linestyle="dashed",color = "green",label ="Max strain")
     ax.set_xlabel("Strain")
@@ -35,6 +35,17 @@ if file:
     ax.grid(True)
     ax.legend()
     st.pyplot(fig)
+    from io import BytesIO
+    img = BytesIO()
+    fig.savefig(img, format="png")
+
+    st.download_button(
+    "Download PNG",
+    img.getvalue(),
+    "stress_strain_curve.png",
+    "image/png")
+
+
     # Maximum Stress (UTS)
     max_stress = stress.max()
     # Maximum Strain
