@@ -9,7 +9,7 @@ E = st.number_input(
     "Enter Young's Modulus (MPa)",
     value=31768)
 
-offset = 0.2
+offset = 0.002
 # Upload CSV
 file = st.file_uploader(
     "Upload CSV File",
@@ -20,13 +20,14 @@ if file:
     df = pd.read_csv(file)
     strain = df["Strain"]
     stress = df["Stress"]
-    offset_stress = E*(strain - offset)
+    offset_stress = E * (strain - offset)
+    offset_strain = strain - offset
     st.write("### Uploaded Data")
     st.dataframe(df)
     # Plot Graph
     fig, ax = plt.subplots()
     ax.plot(strain, stress)
-    ax.plot(strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
+    ax.plot(offset_strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
     ax.axhline(max(stress),linestyle="dashed",color = "red",label="UTS")
     ax.axvline(max(strain),linestyle="dashed",color = "green",label ="Max strain")
     ax.set_xlabel("Strain")
