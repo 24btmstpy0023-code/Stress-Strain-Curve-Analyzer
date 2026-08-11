@@ -7,7 +7,7 @@ st.title("Stress-Strain Analyzer - by Priyaranjan")
 # Young's Modulus Input
 E = st.number_input(
     "Enter Young's Modulus (MPa)",
-    value=31.76)
+    value=31768)
 
 offset = 0.002
 # Upload CSV
