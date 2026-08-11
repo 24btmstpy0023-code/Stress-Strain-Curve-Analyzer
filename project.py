@@ -17,9 +17,9 @@ file = st.file_uploader(
 
 
 if file:
-    df = pd.read_csv(file)
-    strain = df["Strain"]
-    stress = df["Stress"]
+    df = pd.read_csv(file,header=None)
+    strain = df["0"]
+    stress = df["1"]
     offset_stress = E * (strain - offset)
     offset_strain = strain - offset
     st.write("### Uploaded Data")
