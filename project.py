@@ -35,7 +35,7 @@ if file:
     ax.set_title("Stress-Strain Curve")
     ax.grid(True)
     ax.legend()
-    ax.set_ylim(0,max(stress))
+    ax.set_ylim(0,max(stress)+10)
     st.pyplot(fig)
     from io import BytesIO
     img = BytesIO()
