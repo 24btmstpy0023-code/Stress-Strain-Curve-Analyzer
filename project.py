@@ -9,7 +9,7 @@ E = st.number_input(
     "Enter Young's Modulus (MPa)",
     value=31768)
 
-offset = 0.002
+offset = 0.2
 # Upload CSV
 file = st.file_uploader(
     "Upload CSV File",
