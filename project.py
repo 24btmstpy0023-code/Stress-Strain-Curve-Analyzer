@@ -7,7 +7,7 @@ st.title("Stress-Strain Analyzer - by Priyaranjan")
 # Young's Modulus Input
 E = st.number_input(
     "Enter Young's Modulus (MPa)",
-    value=31763)
+    value=31767)
 
 offset = 0.002
 # Upload CSV
@@ -26,7 +26,7 @@ if file:
     # Plot Graph
     fig, ax = plt.subplots()
     ax.plot(strain, stress)
-  #  ax.plot(strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
+    ax.plot(strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
     ax.axhline(max(stress),linestyle="dashed",color = "red",label="UTS")
     ax.axvline(max(strain),linestyle="dashed",color = "green",label ="Max strain")
     ax.set_xlabel("Strain")
