@@ -7,7 +7,7 @@ st.title("Stress-Strain Analyzer - by Priyaranjan")
 # Young's Modulus Input
 E = st.number_input(
     "Enter Young's Modulus (MPa)",
-    value=69000)
+    value=31678)
 
 offset = 0.002
 # Upload CSV
@@ -35,6 +35,7 @@ if file:
     ax.set_title("Stress-Strain Curve")
     ax.grid(True)
     ax.legend()
+    ax.set_ylim(0,max(stress))
     st.pyplot(fig)
     from io import BytesIO
     img = BytesIO()
