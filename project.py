@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from scipy.integrate import simpson
 st.title("Stress-Strain Analyzer - by Priyaranjan")
 # Young's Modulus Input
-E = st.number_input(
-    "Enter Young's Modulus (MPa)")
+#E = st.number_input(
+    #"Enter Young's Modulus (MPa)")
 
 offset = 0.002
 # Upload CSV
@@ -19,8 +19,34 @@ if file:
     df = pd.read_csv(file)
     strain = df["Strain"]
     stress = df["Stress"]
-    offset_stress = E * (strain - offset)
+    best_r2 = 0
+    best_E = 0
+    best_points = 0
+
+    for n in range(5, len(strain) + 1):
+
+        result = linregress(strain[:n], stress[:n])
+
+        r2 = result.rvalue**2
+
+        if r2 > best_r2:
+            best_r2 = r2
+            best_E = result.slope
+            best_points = n
+
+        if r2 >= 0.999:
+            break
+    offset_stress = best_E * (strain - offset)
     offset_strain = strain - offset
+    st.subheader("Results")
+
+    st.write(f"**Young's Modulus:** {best_E:.2f} MPa")
+    st.write(f"**Young's Modulus:** {best_E/1000:.2f} GPa")
+    st.write(f"**UTS:** {uts:.2f} MPa")
+    st.write(f"**Maximum Strain:** {max_strain:.4f}")
+    st.write(f"**Resilience:** {resilience:.4f}")
+    st.write(f"**Toughness:** {toughness:.4f}")
+    st.write(f"**R²:** {best_r2:.6f}")
     st.write("### Uploaded Data")
     st.dataframe(df)
     # Plot Graph
