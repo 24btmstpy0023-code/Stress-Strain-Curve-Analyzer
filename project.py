@@ -50,8 +50,8 @@ if file:
     fig, ax = plt.subplots()
     ax.plot(strain, stress)
     ax.plot(offset_strain,offset_stress,linestyle = "dashed",color ="k",label="offset_line")
-    ax.axhline(max(stress),linestyle="dashed",color = "red",label="UTS")
-    ax.axvline(max(strain),linestyle="dashed",color = "green",label ="Max strain")
+    ax.axhline(max(stress),linestyle="dashed",color = "red",label=f"UTS = {max(stress)}MPa")
+    ax.axvline(max(strain),linestyle="dashed",color = "green",label =f"Max strain = {max(strain)}")
     ax.set_xlabel("Strain")
     ax.set_ylabel("Stress (MPa)")
     ax.set_title("Stress-Strain Curve")
@@ -75,7 +75,7 @@ if file:
     # Maximum Strain
     max_strain = strain.max()
     # Resilience
-    resilience = (max_stress**2) / (2 * E)
+    resilience = (max_stress**2) / (2 * best_E)
     # Toughness
     toughness = simpson(stress, x=strain)
     st.write("## Results")
