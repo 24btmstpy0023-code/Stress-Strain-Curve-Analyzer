@@ -43,10 +43,6 @@ if file:
 
     st.write(f"**Young's Modulus:** {best_E:.2f} MPa")
     st.write(f"**Young's Modulus:** {best_E/1000:.2f} GPa")
-    st.write(f"**UTS:** {uts:.2f} MPa")
-    st.write(f"**Maximum Strain:** {max_strain:.4f}")
-    st.write(f"**Resilience:** {resilience:.4f}")
-    st.write(f"**Toughness:** {toughness:.4f}")
     st.write(f"**R²:** {best_r2:.6f}")
     st.write("### Uploaded Data")
     st.dataframe(df)
