@@ -6,8 +6,7 @@ from scipy.integrate import simpson
 st.title("Stress-Strain Analyzer - by Priyaranjan")
 # Young's Modulus Input
 E = st.number_input(
-    "Enter Young's Modulus (MPa)",
-    value=31768)
+    "Enter Young's Modulus (MPa)")
 
 offset = 0.002
 # Upload CSV
