@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import simpson
+from scipy.stats import linregress
 st.title("Stress-Strain Analyzer - by Priyaranjan")
 # Young's Modulus Input
 #E = st.number_input(
